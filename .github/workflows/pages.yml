@@ -23,10 +23,11 @@ jobs:
           python-version: '3.12'
       - run: python scripts/build.py
       - run: python scripts/check.py
+      - run: python scripts/check_site.py
       - name: Stage public site
         run: |
           mkdir _site
-          cp index.html .nojekyll _site/
+          cp index.html changelog.html .nojekyll _site/
           cp -R assets data _site/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

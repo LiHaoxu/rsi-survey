@@ -1,0 +1,23 @@
+name: Review external links
+on:
+  schedule:
+    - cron: '0 8 * * 0'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Review public source URLs
+        run: python3 scripts/check_external_links.py --output link-report.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: external-link-review
+          path: link-report.json
+          retention-days: 30

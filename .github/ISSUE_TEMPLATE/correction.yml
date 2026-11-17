@@ -1,0 +1,23 @@
+name: 报告错误
+description: 反馈题录、内容、关联、失效链接或页面使用问题。
+title: "[纠错] "
+body:
+  - type: input
+    id: page
+    attributes:
+      label: 页面或条目链接
+      description: 请复制出错页面的地址；筛选条件也可以保留。
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: 问题与建议修正
+      description: 页面问题请描述操作步骤、预期与实际表现；内容问题请说明应改成什么。
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: 依据或复现信息
+      description: 可填写权威来源与章节，或浏览器、设备和窗口大小。

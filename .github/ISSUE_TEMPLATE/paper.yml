@@ -1,0 +1,26 @@
+name: 推荐论文
+description: 提交适合本站收录的公开资料，由维护者核验。
+title: "[推荐] "
+body:
+  - type: markdown
+    attributes:
+      value: 请使用公开来源；提交建议不会自动加入目录。
+  - type: textarea
+    id: identity
+    attributes:
+      label: 资料与一手来源
+      description: 请提供完整题名、作者、正式会议与年份，以及会议、出版社或作者来源链接。
+    validations:
+      required: true
+  - type: textarea
+    id: relevance
+    attributes:
+      label: 与推荐系统自进化的关系
+      description: 说明更新对象、反馈来源和相对现有条目的补充价值。
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 证据与使用边界
+      description: 可补充官方代码、原文章节、适用条件或已知限制；未知事项请直接注明。

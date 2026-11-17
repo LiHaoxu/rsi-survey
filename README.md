@@ -43,3 +43,22 @@ python3 scripts/check.py
 ## 致谢
 
 文献组织参考 [OpenSDC Survey](https://opensdc-org.github.io/survey/)，本项目按推荐系统自进化主题重新组织内容与界面。论文及第三方资源的权利归原作者和发布方；本站仅提供题录、原创概括和出处链接。
+
+## v1.1 浏览与关联
+
+目录默认使用紧凑列表；可切换详细卡片，并按年份或标题排序。年份、会议、路线、代码条件、视图和排序保存在 URL 中，适合分享筛选后的清单。论文永久链接会揭示被筛选隐藏的条目。论文详情中的 Bench 入口分为已核验资源关联与本站建议协议；实现收录不自动表示原论文使用该工具。
+
+`data/connections.json` 是两个仓库各自保存的同一份关联快照。`papers`、`resources`、`protocols` 存放公开题录和入口；`links` 中 `uses` 表示已核验的论文使用，`implements` 表示作者实现或后续工具收录，`suggested` 表示本站建议；`protocol_links` 全部是建议，不能当作论文事实。事实关联必须带 `sources` 与 `locator`，不同数据版本不得按简称合并。修改关联时同步两个仓库，并核对双方条目 ID；独立构建不依赖另一个仓库的网络可用性。
+
+维护入口：网页上的推荐与纠错按钮打开 GitHub Issue 表单；不会直接发布内容。`data/changelog.json` 保存更新记录，由 `scripts/maintenance.py` 生成 `changelog.html`，随主构建运行。
+
+每次更新后执行：
+
+```sh
+python3 scripts/build.py
+python3 scripts/check_site.py
+```
+
+Survey 另执行 `python3 scripts/check.py`。`check_site.py` 核验所有页面的站内文件、锚点、关联引用和题录快照；两个仓库在本地并排时还会核验跨站目标，CI 单独构建时允许兄弟仓库不存在。
+
+`Review external links` 工作流每周日 08:00 UTC 运行，也可以在 Actions 手动触发。它检查页面里的公共来源链接，把状态摘要写入运行页面，并保存 JSON 报告 30 天。403、429、网络超时与疑似失效分开记录，供维护者核查；不会自动删论文、修改来源或发送 Issue。可在本地运行 `python3 scripts/check_external_links.py --output /tmp/rsi-link-report.json`。

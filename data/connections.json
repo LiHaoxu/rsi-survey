@@ -1,0 +1,675 @@
+{
+  "updated": "2026-11-17",
+  "papers": [
+    {
+      "id": "rsir-2026",
+      "short": "RSIR",
+      "title": "Can Recommender Systems Teach Themselves? A Recursive Self-Improving Framework with Fidelity Control",
+      "year": 2026,
+      "venue": "ICML"
+    },
+    {
+      "id": "self-evolverec-2026",
+      "short": "Self-EvolveRec",
+      "title": "Self-EvolveRec: Self-Evolving Recommender Systems with LLM-based Directional Feedback",
+      "year": 2026,
+      "venue": "NeurIPS"
+    },
+    {
+      "id": "self-evolving-youtube-2026",
+      "short": "Self-Evolving RecSys",
+      "title": "Self-Evolving Recommendation System: End-To-End Autonomous Model Optimization With LLM Agents",
+      "year": 2026,
+      "venue": "RecSys"
+    },
+    {
+      "id": "caserec-2025",
+      "short": "CaseRec",
+      "title": "Improving Sequential Recommenders through Counterfactual Augmentation of System Exposure",
+      "year": 2025,
+      "venue": "SIGIR"
+    },
+    {
+      "id": "more-2025",
+      "short": "MoRE",
+      "title": "MoRE: A Mixture of Reflectors Framework for Large Language Model-Based Sequential Recommendation",
+      "year": 2025,
+      "venue": "RecSys"
+    },
+    {
+      "id": "r4ec-2025",
+      "short": "R⁴ec",
+      "title": "R4ec: A Reasoning, Reflection, and Refinement Framework for Recommendation Systems",
+      "year": 2025,
+      "venue": "RecSys"
+    },
+    {
+      "id": "re2llm-2025",
+      "short": "Re2LLM",
+      "title": "Re2LLM: Reflective Reinforcement Large Language Model for Session-based Recommendation",
+      "year": 2025,
+      "venue": "AAAI"
+    },
+    {
+      "id": "sprec-2025",
+      "short": "SPRec",
+      "title": "SPRec: Self-Play to Debias LLM-based Recommendation",
+      "year": 2025,
+      "venue": "WWW"
+    },
+    {
+      "id": "agentcf-2024",
+      "short": "AgentCF",
+      "title": "AgentCF: Collaborative Learning with Autonomous Language Agents for Recommender Systems",
+      "year": 2024,
+      "venue": "WWW"
+    },
+    {
+      "id": "billp-2024",
+      "short": "BiLLP",
+      "title": "Large Language Models are Learnable Planners for Long-Term Recommendation",
+      "year": 2024,
+      "venue": "SIGIR"
+    },
+    {
+      "id": "po4isr-2024",
+      "short": "PO4ISR",
+      "title": "Large Language Models for Intent-Driven Session Recommendations",
+      "year": 2024,
+      "venue": "SIGIR"
+    },
+    {
+      "id": "gpt4rec-graph-2024",
+      "short": "GPT4Rec (Graph)",
+      "title": "GPT4Rec: Graph Prompt Tuning for Streaming Recommendation",
+      "year": 2024,
+      "venue": "SIGIR"
+    },
+    {
+      "id": "llmrec-2024",
+      "short": "LLMRec",
+      "title": "LLMRec: Large Language Models with Graph Augmentation for Recommendation",
+      "year": 2024,
+      "venue": "WSDM"
+    },
+    {
+      "id": "agent4rec-2024",
+      "short": "Agent4Rec",
+      "title": "On Generative Agents in Recommendation",
+      "year": 2024,
+      "venue": "SIGIR"
+    },
+    {
+      "id": "dorl-2023",
+      "short": "DORL",
+      "title": "Alleviating Matthew Effect of Offline Reinforcement Learning in Interactive Recommendation",
+      "year": 2023,
+      "venue": "SIGIR"
+    },
+    {
+      "id": "degc-2023",
+      "short": "DEGC",
+      "title": "Dynamically Expandable Graph Convolution for Streaming Recommendation",
+      "year": 2023,
+      "venue": "WWW"
+    },
+    {
+      "id": "prefrec-2023",
+      "short": "PrefRec",
+      "title": "PrefRec: Recommender Systems with Human Preferences for Reinforcing Long-term User Engagement",
+      "year": 2023,
+      "venue": "KDD"
+    },
+    {
+      "id": "rlur-2023",
+      "short": "RLUR",
+      "title": "Reinforcing User Retention in a Billion Scale Short Video Recommender System",
+      "year": 2023,
+      "venue": "WWW"
+    },
+    {
+      "id": "piw-2023",
+      "short": "PIW",
+      "title": "Structure Aware Incremental Learning with Personalized Imitation Weights for Recommender Systems",
+      "year": 2023,
+      "venue": "AAAI"
+    },
+    {
+      "id": "teracon-2023",
+      "short": "TERACON",
+      "title": "Task Relation-aware Continual User Representation Learning",
+      "year": 2023,
+      "venue": "KDD"
+    },
+    {
+      "id": "reloop-2022",
+      "short": "ReLoop",
+      "title": "ReLoop: A Self-Correction Continual Learning Loop for Recommender Systems",
+      "year": 2022,
+      "venue": "SIGIR"
+    },
+    {
+      "id": "simgcl-2022",
+      "short": "SimGCL",
+      "title": "Are Graph Augmentations Necessary? Simple Graph Contrastive Learning for Recommendation",
+      "year": 2022,
+      "venue": "SIGIR"
+    },
+    {
+      "id": "ncl-2022",
+      "short": "NCL",
+      "title": "Improving Graph Collaborative Filtering with Neighborhood-enriched Contrastive Learning",
+      "year": 2022,
+      "venue": "WWW"
+    },
+    {
+      "id": "iclrec-2022",
+      "short": "ICLRec",
+      "title": "Intent Contrastive Learning for Sequential Recommendation",
+      "year": 2022,
+      "venue": "WWW"
+    },
+    {
+      "id": "sgdl-2022",
+      "short": "SGDL",
+      "title": "Self-Guided Learning to Denoise for Robust Recommendation",
+      "year": 2022,
+      "venue": "SIGIR"
+    },
+    {
+      "id": "buir-2021",
+      "short": "BUIR",
+      "title": "Bootstrapping User and Item Representations for One-Class Collaborative Filtering",
+      "year": 2021,
+      "venue": "SIGIR"
+    },
+    {
+      "id": "conure-2021",
+      "short": "Conure",
+      "title": "One Person, One Model, One World: Learning Continual User Representation without Forgetting",
+      "year": 2021,
+      "venue": "SIGIR"
+    },
+    {
+      "id": "sgl-2021",
+      "short": "SGL",
+      "title": "Self-supervised Graph Learning for Recommendation",
+      "year": 2021,
+      "venue": "SIGIR"
+    },
+    {
+      "id": "graphsail-2020",
+      "short": "GraphSAIL",
+      "title": "GraphSAIL: Graph Structure Aware Incremental Learning for Recommender Systems",
+      "year": 2020,
+      "venue": "CIKM"
+    },
+    {
+      "id": "self-supervised-rl-2020",
+      "short": "SQN / SAC",
+      "title": "Self-Supervised Reinforcement Learning for Recommender Systems",
+      "year": 2020,
+      "venue": "SIGIR"
+    },
+    {
+      "id": "slateq-2019",
+      "short": "SlateQ",
+      "title": "SlateQ: A Tractable Decomposition for Reinforcement Learning with Recommendation Sets",
+      "year": 2019,
+      "venue": "IJCAI"
+    },
+    {
+      "id": "bert4rec-2019",
+      "short": "BERT4Rec",
+      "title": "BERT4Rec: Sequential Recommendation with Bidirectional Encoder Representations from Transformer",
+      "year": 2019,
+      "venue": "CIKM"
+    },
+    {
+      "id": "drn-2018",
+      "short": "DRN",
+      "title": "DRN: A Deep Reinforcement Learning Framework for News Recommendation",
+      "year": 2018,
+      "venue": "WWW"
+    },
+    {
+      "id": "ranking-distillation-2018",
+      "short": "Ranking Distillation",
+      "title": "Ranking Distillation: Learning Compact Ranking Models With High Performance for Recommender System",
+      "year": 2018,
+      "venue": "KDD"
+    },
+    {
+      "id": "sasrec-2018",
+      "short": "SASRec",
+      "title": "Self-Attentive Sequential Recommendation",
+      "year": 2018,
+      "venue": "ICDM"
+    },
+    {
+      "id": "slate-ope-2017",
+      "short": "Slate OPE",
+      "title": "Off-policy evaluation for slate recommendation",
+      "year": 2017,
+      "venue": "NeurIPS"
+    },
+    {
+      "id": "recommendations-as-treatments-2016",
+      "short": "Recommendations as Treatments",
+      "title": "Recommendations as Treatments: Debiasing Learning and Evaluation",
+      "year": 2016,
+      "venue": "ICML"
+    },
+    {
+      "id": "crm-2015",
+      "short": "CRM / POEM",
+      "title": "Counterfactual Risk Minimization: Learning from Logged Bandit Feedback",
+      "year": 2015,
+      "venue": "ICML"
+    },
+    {
+      "id": "linucb-2010",
+      "short": "LinUCB",
+      "title": "A Contextual-Bandit Approach to Personalized News Article Recommendation",
+      "year": 2010,
+      "venue": "WWW"
+    }
+  ],
+  "resources": [
+    {
+      "id": "movielens-32m",
+      "name": "MovieLens 32M",
+      "type": "dataset"
+    },
+    {
+      "id": "amazon-2023",
+      "name": "Amazon Reviews 2023",
+      "type": "dataset"
+    },
+    {
+      "id": "amazon-2018",
+      "name": "Amazon Review Data 2018",
+      "type": "dataset"
+    },
+    {
+      "id": "kuairec",
+      "name": "KuaiRec",
+      "type": "dataset"
+    },
+    {
+      "id": "kuairand",
+      "name": "KuaiRand",
+      "type": "dataset"
+    },
+    {
+      "id": "mind",
+      "name": "MIND",
+      "type": "dataset"
+    },
+    {
+      "id": "open-bandit",
+      "name": "Open Bandit Dataset",
+      "type": "dataset"
+    },
+    {
+      "id": "redial",
+      "name": "ReDial",
+      "type": "dataset"
+    },
+    {
+      "id": "recbole",
+      "name": "RecBole",
+      "type": "tool"
+    },
+    {
+      "id": "easyrl4rec",
+      "name": "EasyRL4Rec",
+      "type": "tool"
+    },
+    {
+      "id": "open-bandit-pipeline",
+      "name": "Open Bandit Pipeline",
+      "type": "tool"
+    },
+    {
+      "id": "recsim",
+      "name": "RecSim",
+      "type": "tool"
+    },
+    {
+      "id": "recsim-ng",
+      "name": "RecSim NG",
+      "type": "tool"
+    },
+    {
+      "id": "recommenders",
+      "name": "Recommenders",
+      "type": "tool"
+    },
+    {
+      "id": "agent4rec",
+      "name": "Agent4Rec",
+      "type": "tool"
+    }
+  ],
+  "protocols": [
+    {
+      "id": "offline-self-training",
+      "title": "离线自训练与合成数据"
+    },
+    {
+      "id": "continual-temporal",
+      "title": "持续学习与时间演化"
+    },
+    {
+      "id": "interactive-policy",
+      "title": "交互反馈与策略改进"
+    },
+    {
+      "id": "agent-feedback",
+      "title": "智能体反思与反馈记忆"
+    }
+  ],
+  "links": [
+    {
+      "paper_id": "dorl-2023",
+      "resource_id": "kuairec",
+      "relation": "uses",
+      "note": "论文用 KuaiRec 的训练日志与近全观测小矩阵构建交互环境；奖励为归一化观看时长，重复类别触发退出是额外模拟规则。",
+      "sources": [
+        "https://arxiv.org/html/2307.04571v1",
+        "https://github.com/chongminggao/DORL-codes"
+      ],
+      "locator": "论文 §6.1.1 Recommendation Environments 与 Table 1；官方 README 开头和“Run model-based method”"
+    },
+    {
+      "paper_id": "dorl-2023",
+      "resource_id": "kuairand",
+      "relation": "uses",
+      "note": "策略实验使用 KuaiRand-Pure，点击作为反馈并通过矩阵补全构建环境；论文 §3 的日志分析另用 KuaiRand-27K，两种用途与版本需区分。",
+      "sources": [
+        "https://arxiv.org/html/2307.04571v1",
+        "https://github.com/chongminggao/DORL-codes"
+      ],
+      "locator": "论文 §3 Empirical Study on Matthew Effect；§6.1.1 Recommendation Environments 与 Table 1"
+    },
+    {
+      "paper_id": "dorl-2023",
+      "resource_id": "easyrl4rec",
+      "relation": "implements",
+      "note": "EasyRL4Rec 提供 DORL 的后续库内实现和运行入口；这不是 DORL 原论文使用该后发工具的声明，也不表示本站已运行复现。",
+      "sources": [
+        "https://github.com/chongminggao/EasyRL4Rec"
+      ],
+      "locator": "官方 README 的“Run Advance models”，examples/advance/run_DORL.py 命令"
+    },
+    {
+      "paper_id": "rlur-2023",
+      "resource_id": "kuairand",
+      "relation": "uses",
+      "note": "论文离线实验基于 KuaiRand 构建即时反馈、退出和回访模拟器。正文此处未明确 Pure／1K／27K，关联仅到 KuaiRand 资源族，不推定具体版本；线上快手实验是另一组私有数据。",
+      "sources": [
+        "https://arxiv.org/html/2302.01724v3"
+      ],
+      "locator": "论文 §4 Offline Experiments；§5 Live Experiments"
+    },
+    {
+      "paper_id": "caserec-2025",
+      "resource_id": "kuairand",
+      "relation": "uses",
+      "note": "论文明确使用 KuaiRand-Pure，区分常规策略日志 KuaiRand-15policies 与随机曝光日志 KuaiRand-Random；不能将完整 KuaiRand 日志全部视为随机曝光。",
+      "sources": [
+        "https://arxiv.org/html/2504.13482v1"
+      ],
+      "locator": "论文 §4.1.1 Datasets 中 KuaiRand-Pure 段落"
+    },
+    {
+      "paper_id": "billp-2024",
+      "resource_id": "amazon-2018",
+      "relation": "uses",
+      "note": "论文使用 Amazon Review Data 2018 的 Book 子集，标明收集时间为 1996–2018，并采用用户和物品交互不少于 90 次的过滤；该预处理不等于通用 5-core 子集。",
+      "sources": [
+        "https://arxiv.org/html/2403.00843v2"
+      ],
+      "locator": "论文 §5.1.1 Recommendation Experiments，Amazon-Book 段落及脚注 4 的 amazon_v2 数据入口"
+    },
+    {
+      "paper_id": "billp-2024",
+      "resource_id": "easyrl4rec",
+      "relation": "uses",
+      "note": "论文实验设置明确说明模拟实验和基线基于 EasyRL4Rec 实现；需要保留该论文自己的环境、奖励、数据处理和退出规则。",
+      "sources": [
+        "https://arxiv.org/html/2403.00843v2"
+      ],
+      "locator": "论文 §5.1 Experiments Setup 首段与脚注 3"
+    },
+    {
+      "paper_id": "ncl-2022",
+      "resource_id": "recbole",
+      "relation": "uses",
+      "note": "NCL 官方实现基于 RecBole，依赖中明确固定 recbole==1.0.0。工具关联不意味着当前 RecBole 版本与论文实验配置等价。",
+      "sources": [
+        "https://github.com/RUCAIBox/NCL"
+      ],
+      "locator": "官方 README 的 Requirements、Datasets 和 Acknowledgement；Requirements 中 recbole==1.0.0"
+    },
+    {
+      "paper_id": "agent4rec-2024",
+      "resource_id": "agent4rec",
+      "relation": "implements",
+      "note": "该资源是论文 On Generative Agents in Recommendation 的作者实现。官方初始化数据为 MovieLens-1M，因此没有关联到本站 MovieLens 32M。",
+      "sources": [
+        "https://github.com/LehengTHU/Agent4Rec"
+      ],
+      "locator": "官方仓库 About；README 开头“On Generative Agents in Recommendation”及 MovieLens-1M 链接"
+    },
+    {
+      "paper_id": "rsir-2026",
+      "resource_id": "amazon-2023",
+      "relation": "suggested",
+      "note": "本站迁移实验建议：2023 版提供带时间戳的交互，可重新定义序列自训练任务；需重新冻结品类、过滤与切分。不是原论文使用该版本或已复现成功的声明。",
+      "sources": [
+        "https://amazon-reviews-2023.github.io/",
+        "https://github.com/USTC-StarTeam/RSIR"
+      ],
+      "locator": "建议依据：数据官网 What’s New / Common Data Processing；RSIR README §3 Method At A Glance"
+    },
+    {
+      "paper_id": "crm-2015",
+      "resource_id": "open-bandit",
+      "relation": "suggested",
+      "note": "本站适配建议：已知动作倾向概率的日志适合检查反事实学习目标和离策略估计；应固定目标策略、位置处理与支持集。这不是 CRM 原论文所用数据。",
+      "sources": [
+        "https://research.zozo.com/data.html"
+      ],
+      "locator": "建议依据：官方 Data description 与 Fields 中 propensity_score、position、click"
+    },
+    {
+      "paper_id": "reloop-2022",
+      "resource_id": "kuairand",
+      "relation": "suggested",
+      "note": "本站扩展实验建议：时间戳和多类交互反馈可用于按时间构造预测误差与更新序列；须自行产生基线预测日志、定义可用反馈时间及更新频率。不是 ReLoop 原论文数据或现成复现环境。",
+      "sources": [
+        "https://kuairand.com/"
+      ],
+      "locator": "建议依据：官方 Overview / Advantages 的时间戳与多类反馈说明"
+    }
+  ],
+  "protocol_links": [
+    {
+      "paper_id": "rsir-2026",
+      "protocol_id": "offline-self-training",
+      "note": "本站建议：建议固定生成轮数、保真筛选与停止规则，比较等训练预算和仅真实数据继续训练；测试集不能选择最优轮次。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "caserec-2025",
+      "protocol_id": "offline-self-training",
+      "note": "本站建议：建议比较随机增强与自改进增强，控制合成轨迹数、训练量和模拟反馈来源；实际曝光日志与反事实反馈分别标记。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "sprec-2025",
+      "protocol_id": "offline-self-training",
+      "note": "本站建议：建议记录每轮自生成负例与 SFT/DPO 成本，同时报告覆盖和偏差，避免只挑选准确率最优轮次。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "llmrec-2024",
+      "protocol_id": "offline-self-training",
+      "note": "本站建议：建议作为生成增强的对照，区分外部 LLM 教师与推荐器自身生成，并控制增强规模；不将一次增强解释为多轮自进化。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "ncl-2022",
+      "protocol_id": "offline-self-training",
+      "note": "本站建议：建议仅作为离线自生成监督的支撑对照，消融聚类刷新与额外优化预算；原方法不是部署后持续自进化。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "iclrec-2022",
+      "protocol_id": "offline-self-training",
+      "note": "本站建议：建议仅作为意图伪标签训练的支撑对照，隔离训练内聚类与测试标签；不将预定义 EM 训练视为自主系统修改。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "sgdl-2022",
+      "protocol_id": "offline-self-training",
+      "note": "本站建议：建议比较固定去噪、无调度和等计算预算，报告阶段切换与元学习成本；它是单次训练中的自引导方法。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "buir-2021",
+      "protocol_id": "offline-self-training",
+      "note": "本站建议：建议作为自举目标的对照，控制目标网络更新与优化预算；不将移动平均目标网络等同于系统级递归自进化。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "ranking-distillation-2018",
+      "protocol_id": "offline-self-training",
+      "note": "本站建议：建议用作固定教师基线，与教师刷新和自训练分别比较，计入教师训练与推断成本。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "gpt4rec-graph-2024",
+      "protocol_id": "continual-temporal",
+      "note": "本站建议：建议按时间窗口检查图结构变化后的适应、遗忘和更新成本，隔离未来图边及统计信息。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "degc-2023",
+      "protocol_id": "continual-temporal",
+      "note": "本站建议：建议在增量图窗口中控制扩容、回放和全量重训预算，分别报告旧用户与新用户表现。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "piw-2023",
+      "protocol_id": "continual-temporal",
+      "note": "本站建议：建议检验个性化重要性权重在增量数据上的适应与遗忘，固定历史容量和更新频率。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "teracon-2023",
+      "protocol_id": "continual-temporal",
+      "note": "本站建议：建议借用持续学习的保留与迁移对照；其任务序列不必等同时间窗口，适配时须单独声明任务顺序。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "reloop-2022",
+      "protocol_id": "continual-temporal",
+      "note": "本站建议：建议按反馈可用时间重放预测与误差修正，分别记录旧预测、反馈到达和更新时刻。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "conure-2021",
+      "protocol_id": "continual-temporal",
+      "note": "本站建议：建议借用持续学习的遗忘与容量对照；原论文的多任务序列不能自动视为自然时间漂移。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "graphsail-2020",
+      "protocol_id": "continual-temporal",
+      "note": "本站建议：建议比较图增量更新、仅新数据微调和全量重训，报告结构保留、遗忘及更新开销。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "billp-2024",
+      "protocol_id": "interactive-policy",
+      "note": "本站建议：建议固定交互预算与退出规则，分别评估宏观经验、微观规划和累计奖励，并记录 LLM 调用成本。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "dorl-2023",
+      "protocol_id": "interactive-policy",
+      "note": "本站建议：建议固定重复推荐与退出规则，区分模拟反馈和真实日志，联合报告累计奖励、多样性和环境敏感性。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "prefrec-2023",
+      "protocol_id": "interactive-policy",
+      "note": "本站建议：建议固定偏好标注、策略更新与交互预算，区分离线偏好奖励、模拟回报和线上长期结果。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "rlur-2023",
+      "protocol_id": "interactive-policy",
+      "note": "本站建议：建议明确跨会话奖励延迟与回访模拟器；离线 KuaiRand 实验和私有平台线上留存实验必须分开报告。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "self-supervised-rl-2020",
+      "protocol_id": "interactive-policy",
+      "note": "本站建议：建议将监督目标和 RL 目标分别消融；静态序列评估与交互环境累计回报须分开展示。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "slateq-2019",
+      "protocol_id": "interactive-policy",
+      "note": "本站建议：建议按整组推荐的动作空间、用户选择模型与反馈定义扩展协议，不能直接套用单物品 bandit 指标。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "drn-2018",
+      "protocol_id": "interactive-policy",
+      "note": "本站建议：建议固定新闻时效与交互预算，分别检查即时点击、长期奖励和冷启动处理。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "slate-ope-2017",
+      "protocol_id": "interactive-policy",
+      "note": "本站建议：建议使用协议中的离策略评估部分，并补充 slate 动作与日志倾向概率定义；不需要把估计器包装成自进化方法。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "recommendations-as-treatments-2016",
+      "protocol_id": "interactive-policy",
+      "note": "本站建议：建议用作选择偏差和离线评估对照；检查倾向概率、支持集与权重方差，不要求存在多轮更新。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "crm-2015",
+      "protocol_id": "interactive-policy",
+      "note": "本站建议：建议用作从日志反馈改进策略的统计对照，披露倾向概率、权重裁剪和独立测试。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "linucb-2010",
+      "protocol_id": "interactive-policy",
+      "note": "本站建议：建议用作单步交互探索基线，固定上下文特征及反馈预算；单步 bandit 结果与长期 RL 回报分别报告。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "self-evolverec-2026",
+      "protocol_id": "agent-feedback",
+      "note": "本站建议：建议借用反馈和等成本消融，并扩展记录代码版本、模型训练与搜索预算；现有协议不覆盖全部自动模型工程流程。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "self-evolving-youtube-2026",
+      "protocol_id": "agent-feedback",
+      "note": "本站建议：建议仅用于离线工程智能体反馈部分的等成本对照；线上业务验证、部署门槛与回滚需另行定义工业协议。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "more-2025",
+      "protocol_id": "agent-feedback",
+      "note": "本站建议：建议分别消融离线反思修改和在线反思选择，控制提示、候选库及调用预算。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "r4ec-2025",
+      "protocol_id": "agent-feedback",
+      "note": "本站建议：建议区分角色训练与推理时知识修正，进行无反思、固定反思和等调用次数对照。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "re2llm-2025",
+      "protocol_id": "agent-feedback",
+      "note": "本站建议：建议分别检查错误反思知识库和提示检索策略，避免测试反馈写入公共记忆库。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "agentcf-2024",
+      "protocol_id": "agent-feedback",
+      "note": "本站建议：建议隔离用户与物品记忆中的测试标签，比较双侧反思、单侧反思和等调用预算。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "po4isr-2024",
+      "protocol_id": "agent-feedback",
+      "note": "本站建议：建议记录提示改写、候选筛选与评价预算，分离优化会话与独立测试会话。 该关联不表示论文采用本站协议。"
+    },
+    {
+      "paper_id": "agent4rec-2024",
+      "protocol_id": "agent-feedback",
+      "note": "本站建议：建议仅评估模拟用户的记忆与反馈作为评测组件，校准真实行为分布；不预设模拟器本身证明推荐器获得改进。 该关联不表示论文采用本站协议。"
+    }
+  ]
+}

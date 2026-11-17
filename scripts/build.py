@@ -6,6 +6,7 @@ from pathlib import Path
 from html import escape as esc
 from collections import Counter
 from urllib.parse import urlparse
+from maintenance import write_changelog
 
 ROOT = Path(__file__).resolve().parents[1]
 CFG = json.loads((ROOT / 'config.json').read_text())
@@ -50,19 +51,52 @@ papers.sort(key=lambda p:(-p['year'], {'direct':0,'enabling':1,'foundation':2}[p
 counts = Counter(p['category'] for p in papers)
 venues = sorted(set(p['venue'] for p in papers))
 by_id = {p['id']:p for p in papers}
+connections_path = ROOT / 'data' / 'connections.json'
+connections = json.loads(connections_path.read_text()) if connections_path.exists() else {}
+resources_by_id = {r['id']:r for r in connections.get('resources', [])}
+protocols_by_id = {r['id']:r for r in connections.get('protocols', [])}
+
+def connection_html(paper_id):
+    """Keep documented paper facts separate from the atlas's editorial suggestions."""
+    factual, suggested = [], []
+    for item in connections.get('links', []):
+        if item['paper_id'] != paper_id: continue
+        resource = resources_by_id.get(item['resource_id'])
+        if not resource: continue
+        relation = item['relation']
+        if relation not in ('uses', 'implements', 'suggested'):
+            raise ValueError(f'Unknown resource relationship: {relation}')
+        label = {'uses':'论文使用', 'implements':'作者实现收录', 'suggested':'本站建议'}[relation]
+        source_links = ' · '.join(link(u, f'依据 {i+1}') for i,u in enumerate(item.get('sources', [])))
+        locator = f' <span class="source-note">核对位置：{e(item["locator"])}</span>' if item.get('locator') else ''
+        row = f'<li><span class="relation-label">{label}</span> {link(CFG["bench_url"]+"#"+resource["id"],resource["name"])}<p>{e(item.get("note", ""))}{locator}</p>'
+        if source_links: row += f'<div class="sources relation-sources">{source_links}</div>'
+        row += '</li>'
+        (suggested if relation == 'suggested' else factual).append(row)
+    for item in connections.get('protocol_links', []):
+        if item['paper_id'] != paper_id: continue
+        protocol = protocols_by_id.get(item['protocol_id'])
+        if not protocol: continue
+        suggested.append(f'<li><span class="relation-label">建议评测协议</span> {link(BENCH_PROTOCOL_URL+"#"+protocol["id"],protocol["title"])}<p>{e(item.get("note", ""))}</p></li>')
+    sections = []
+    if factual:
+        sections.append('<div><h4>论文关联资源</h4><p class="note">原论文使用的数据，或收录该方法的作者实现；实现收录不表示原论文使用了后发工具。具体版本与核对位置见各项说明。</p><ul>' + ''.join(factual) + '</ul></div>')
+    if suggested:
+        sections.append('<div class="editorial-connections"><h4>本站建议资源与协议</h4><p class="note">以下为编辑提出的研究或评测建议，不表示原论文已经使用这些资源、遵循这些协议或完成本站复现。</p><ul>' + ''.join(suggested) + '</ul></div>')
+    return '<div class="paper-connections">' + ''.join(sections) + '</div>' if sections else ''
 
 def paper_html(p):
     typ = p.get('publication_type','full')
     details = ''.join(f'<p><span class="field-label">{label}</span>{e(p[field])}</p>' for label,field in [('核心方法','method'),('反馈与改进环节','loop'),('论文证据','evidence'),('收录理由 · 编辑判断','influence_reason')])
     sources = ''.join(link(u,f'来源 {i+1}') for i,u in enumerate(p['sources']))
     code = link(p['code'],'官方代码') if p['code'] else '<span class="note">官方代码未核实</span>'
-    return f'''<article class="entry" id="{e(p['id'])}" data-entry data-period="{'recent' if RECENT_START <= p['year'] <= RECENT_END else 'background'}" data-year="{p['year']}" data-venue="{e(p['venue'])}" data-category="{e(p['category'])}" data-relevance="{e(p['relevance'])}" data-code="{'yes' if p['code'] else 'no'}">
+    return f'''<article class="entry" id="{e(p['id'])}" data-entry data-title="{e(p['title'])}" data-period="{'recent' if RECENT_START <= p['year'] <= RECENT_END else 'background'}" data-year="{p['year']}" data-venue="{e(p['venue'])}" data-category="{e(p['category'])}" data-relevance="{e(p['relevance'])}" data-code="{'yes' if p['code'] else 'no'}">
 <div class="entry-top"><span class="badge venue">{e(p['venue'])} {p['year']}</span><span class="badge {p['relevance']}">{RELEVANCE[p['relevance']]}</span><span>{e(CATEGORIES[p['category']][0])}</span><span>·</span><span>{e(TYPES.get(typ,typ))}</span></div>
-<h3>{link(p['url'],p['title'])}</h3><p class="authors">{e(p['authors'])} · {e(p['short'])}</p>
+<h3><span class="paper-short">{e(p['short'])}</span>{link(p['url'],p['title'])}</h3><p class="authors">{e(p['authors'])}</p>
 <p class="summary"><span class="field-label">研究问题</span>{e(p['problem'])}</p>
 <div class="tags">{''.join(f'<span class="tag">{e(t)}</span>' for t in p['tags'])}</div>
-<details><summary>方法、反馈环节与收录依据</summary><div class="details-grid">{details}</div><p class="limitation"><b>证据边界</b>　{e(p['limitation'])}</p><p class="source-note">来源核对：{e(p['verified'])}。文献核对不等于独立复现。</p><div class="sources">{sources}</div></details>
-<div class="sources">{link(p['url'],'论文')}{code}<button type="button" data-cite="{e(p['id'])}">下载引文</button><a href="#{e(p['id'])}" aria-label="{e(p['short'])} 的永久链接"># 永久链接</a></div></article>'''
+<div class="sources entry-actions">{link(p['url'],'论文')}{code}<button type="button" data-cite="{e(p['id'])}">下载引文</button><a href="#{e(p['id'])}" aria-label="{e(p['short'])} 的永久链接"># 永久链接</a></div>
+<details class="entry-details"><summary>方法、反馈与关联资源</summary><div class="details-grid">{details}</div><p class="limitation"><b>证据边界</b>　{e(p['limitation'])}</p>{connection_html(p['id'])}<p class="source-note">来源核对：{e(p['verified'])}。文献核对不等于独立复现。</p><div class="sources">{sources}</div></details></article>'''
 
 def references(names):
     refs = [next((p for p in papers if p['id']==n or p['short'].lower()==n.lower()),None) for n in names]
@@ -88,12 +122,13 @@ html = f'''<!doctype html>
 <section><div class="section-head"><div><div class="eyebrow">THE FEEDBACK LOOP</div><h2>用一个闭环理解自进化</h2></div><p>本站采用广义定义。区分系统直接改进、改进所需的方法，以及评测基础。</p></div><div class="loop"><div><span class="n">01 / Observe</span><b>观察反馈</b><p>交互、误差、偏好、奖励与环境变化。</p></div><div><span class="n">02 / Diagnose</span><b>识别改进方向</b><p>反思失败，选择数据、记忆或更新策略。</p></div><div><span class="n">03 / Update</span><b>更新系统</b><p>调整训练数据、参数、策略、提示与记忆。</p></div><div><span class="n">04 / Evaluate</span><b>验证并进入下一轮</b><p>用独立反馈检验质量、稳定性与计算代价。</p></div></div><p class="note">这是一种阅读与分类框架；单篇论文可能只覆盖其中一部分。“自监督”或“用了 LLM”本身不构成完整自进化。</p></section>
 <section id="taxonomy"><div class="section-head"><div><div class="eyebrow">01 / RESEARCH TRACKS</div><h2>六条研究路线</h2></div><p>按主要改进机制分组；点击路线即可筛选文献。分类表示研究关系，不是论文质量排名。</p></div><div class="taxonomy">{tax}</div></section>
 <section id="catalog"><div class="section-head"><div><div class="eyebrow">02 / PAPER LIBRARY</div><h2>从经典到近期进展</h2></div><a class="section-link" href="#scope">查看收录标准 ↗</a></div>
-<form class="filters" data-filters role="search"><div class="controls"><label>检索论文、方法或关键词<input type="search" name="q" placeholder="例如：self-improvement、反思、持续学习、RSIR" aria-label="检索论文、方法或关键词"></label><label>发表会议<select name="venue">{options([(v,v) for v in venues],'全部会议')}</select></label><label>年份<select name="year">{options([('recent',f'近五年 · {PERIOD_LABEL}'),('background',f'经典前史 · {RECENT_START} 年以前'),*[(y,y) for y in sorted({p['year'] for p in papers},reverse=True)]],'全部年份')}</select></label><label>研究路线<select name="category">{options([(k,v[0]) for k,v in CATEGORIES.items()],'全部路线')}</select></label><label>与自进化的关系<select name="relevance">{options(RELEVANCE.items(),'全部关系')}</select></label><label>实现可用性<select name="code"><option value="">不限</option><option value="yes">已核实官方代码</option></select></label></div><div class="toolbar"><button type="button" data-reset>重置</button><button type="button" data-expand>展开详情</button><button type="button" data-collapse>收起详情</button><button type="button" data-export>导出当前清单 JSON ↓</button><output class="count-output" data-count aria-live="polite">显示 {len(papers)} / {len(papers)} 条</output></div></form><noscript>当前显示完整论文清单。启用 JavaScript 后可使用搜索、筛选与导出。</noscript><p class="note">默认按年份倒序，同年优先显示直接闭环工作。近期代表作的长期影响仍待时间检验；收录理由是基于来源的编辑判断。</p>
-<div data-entries>{''.join(paper_html(p) for p in papers)}</div><div class="empty" data-empty hidden>没有符合条件的论文。请减少关键词或重置筛选。</div></section>
+<form class="filters" data-filters role="search"><div class="catalog-display"><div class="view-switch" role="group" aria-label="文献显示方式"><button type="button" data-view="list" aria-pressed="true">紧凑列表</button><button type="button" data-view="cards" aria-pressed="false">详细卡片</button></div><label class="sort-control">排序<select name="sort" data-sort><option value="newest">年份：新到旧</option><option value="oldest">年份：旧到新</option><option value="title">标题：A–Z</option></select></label></div><div class="quick-filters" role="group" aria-label="快捷筛选"><span>快速查看</span><button type="button" data-quick-year="recent" aria-pressed="false">近五年</button><button type="button" data-quick-year="background" aria-pressed="false">经典前史</button><button type="button" data-quick-code aria-pressed="false">有官方代码</button></div><div class="controls"><label>检索论文、方法或关键词<input type="search" name="q" placeholder="例如：self-improvement、反思、持续学习、RSIR" aria-label="检索论文、方法或关键词"></label><label>发表会议<select name="venue">{options([(v,v) for v in venues],'全部会议')}</select></label><label>年份<select name="year">{options([('recent',f'近五年 · {PERIOD_LABEL}'),('background',f'经典前史 · {RECENT_START} 年以前'),*[(y,y) for y in sorted({p['year'] for p in papers},reverse=True)]],'全部年份')}</select></label><label>研究路线<select name="category">{options([(k,v[0]) for k,v in CATEGORIES.items()],'全部路线')}</select></label><label>与自进化的关系<select name="relevance">{options(RELEVANCE.items(),'全部关系')}</select></label><label>实现可用性<select name="code"><option value="">不限</option><option value="yes">已核实官方代码</option></select></label></div><div class="toolbar"><button type="button" data-reset>重置</button><button type="button" data-expand>展开详情</button><button type="button" data-collapse>收起详情</button><button type="button" data-export>导出当前清单 JSON ↓</button><output class="count-output" data-count aria-live="polite">显示 {len(papers)} / {len(papers)} 条</output></div></form><p class="filter-status" data-filter-status aria-live="polite">全部论文 · 年份新到旧 · 紧凑列表</p><noscript>当前显示完整论文清单；每篇可展开阅读。启用 JavaScript 后可使用筛选、排序、视图切换与导出。</noscript><p class="note">列表与卡片共用同一份文献。近期代表作的长期影响仍待时间检验；收录理由是基于来源的编辑判断。</p>
+<div class="catalog-entries" data-entries data-view="list">{''.join(paper_html(p) for p in papers)}</div><div class="empty" data-empty hidden><strong>没有匹配的论文</strong><p>试试减少关键词，或取消会议、年份和路线限制。</p><button type="button" data-reset>清除全部筛选</button></div></section>
 <section id="reading"><div class="section-head"><div><div class="eyebrow">03 / READING PATHS</div><h2>按研究问题开始阅读</h2></div><p>这些是建议阅读路径，不表示后续工作都直接建立在前一篇之上。</p></div><div class="reading"><div><h3>模型如何产生新的训练信号？</h3><p>先了解蒸馏与自举监督，再阅读数据生成和系统自纠正；检验改进是否超出额外训练本身。</p>{references(['ranking-distillation-2018','buir-2021','RSIR'])}</div><div><h3>怎样从交互中改善下一次决策？</h3><p>从探索与回报建模进入智能体反馈；关注环境真实性、反馈成本以及跨轮次变化。</p>{references(['linucb-2010','slateq-2019','AgentCF','BiLLP'])}</div><div><h3>怎样持续适应，又不遗忘？</h3><p>从用户表示的任务隔离和图结构蒸馏出发，再看模型容量扩展与用户级保留权重；比较适应速度、历史能力和更新成本。</p>{references(['conure-2021','graphsail-2020','degc-2023','piw-2023'])}</div><div><h3>怎样证明系统真的在变好？</h3><p>先理解曝光偏差与反事实评估，再看持续自纠正；最终回到冻结测试集、预算和独立验证。</p>{references(['recommendations-as-treatments-2016','slate-ope-2017','reloop-2022'])}</div></div></section>
 <section id="questions"><div class="section-head"><div><div class="eyebrow">04 / OPEN QUESTIONS</div><h2>读完论文之后，继续追问什么？</h2></div></div><div class="principles"><div><h3>01 · 改进的信号来自哪里？</h3><p>真实用户、固定教师、模拟用户与自我打分的可信度不同。模型认可自己的答案，不能单独证明外部推荐质量提高。</p></div><div><h3>02 · 收益能否穿过多轮迭代？</h3><p>看每一轮的结果、退化和停止条件。单轮提升与持续自进化是不同强度的证据。</p></div><div><h3>03 · 改进是否值得其代价？</h3><p>将生成、筛选、训练和评估全部计入预算，并设置等训练步数、等样本曝光和等成本的对照。</p></div><div><h3>04 · 适应与遗忘如何平衡？</h3><p>同时检验未来窗口的表现与历史用户、长尾物品上的变化；平均准确率可能掩盖持续退化。</p></div></div><p class="note">以上为本站的研究问题与评测建议，相关方法和证据见各论文条目。</p><a class="btn" href="{e(BENCH_PROTOCOL_URL)}">查看四类评测协议 →</a></section>
-<section id="scope" class="scope"><h2>收录标准与证据边界</h2><p><b>主题范围：</b>广义推荐系统自进化：自主改进、反馈记忆、自训练与合成监督、持续适应、探索与策略学习。直接工作必须包含反馈驱动的更新；支撑方法与经典骨干分别标记，不能据此声称它们实现了系统级自主自进化。</p><p><b>发表范围：</b>采用领域顶会精选口径，覆盖推荐、检索、数据挖掘与机器学习重要会议，不统一标成 CCF A。优先正式研究论文；少量具有直接研究价值的短文、Perspective 或工业工作单独标明发表类型。没有已核实会议录用依据的预印本不进入清单。</p><p><b>时间与影响：</b>重点检索 {PERIOD_LABEL} 五个发表年份，按正式会议年份归档；更早工作仅保留必要前史。经典优先考虑其方法沿用与基线价值；新作依据问题、方法代表性和可核实发表记录收录。没有以未经核验的引用量或 GitHub 星数代替学术影响。</p><p><b>精选原则：</b>不设收录篇数或年度配额。除已核实的会议发表外，还须解释其反馈驱动更新机制，或作为必要基础的作用；优先具有后续沿用证据、关键机制代表性或真实系统验证的工作。同一路线不重复堆叠，只有“self”、LLM 或自监督关键词不足以入选。</p><p><b>核验方式：</b>以会议、出版社、作者论文与官方仓库核对题录和方法。每篇附来源与限制；摘要级核对不会写成独立复现，论文报告的效果也不会自动进入本站统一评测榜单。</p><p><b>覆盖限制：</b>这是精选导航，尚未穷尽所有会议论文集。这里的篇数表示当前收录量，不能当作领域论文产量。核对截至 {e(CFG['asof'])}。</p><p>参照 <a href="https://opensdc-org.github.io/survey/">OpenSDC Survey</a> 的文献组织方式；本文献库与其研究主题独立。欢迎通过 {link(CFG['repo_url']+'/issues','GitHub Issues')} 提交遗漏与勘误。</p>{review_html}</section>
+<section id="scope" class="scope"><h2>收录标准与证据边界</h2><p><b>主题范围：</b>广义推荐系统自进化：自主改进、反馈记忆、自训练与合成监督、持续适应、探索与策略学习。直接工作必须包含反馈驱动的更新；支撑方法与经典骨干分别标记，不能据此声称它们实现了系统级自主自进化。</p><p><b>发表范围：</b>采用领域顶会精选口径，覆盖推荐、检索、数据挖掘与机器学习重要会议，不统一标成 CCF A。优先正式研究论文；少量具有直接研究价值的短文、Perspective 或工业工作单独标明发表类型。没有已核实会议录用依据的预印本不进入清单。</p><p><b>时间与影响：</b>重点检索 {PERIOD_LABEL} 五个发表年份，按正式会议年份归档；更早工作仅保留必要前史。经典优先考虑其方法沿用与基线价值；新作依据问题、方法代表性和可核实发表记录收录。没有以未经核验的引用量或 GitHub 星数代替学术影响。</p><p><b>精选原则：</b>不设收录篇数或年度配额。除已核实的会议发表外，还须解释其反馈驱动更新机制，或作为必要基础的作用；优先具有后续沿用证据、关键机制代表性或真实系统验证的工作。同一路线不重复堆叠，只有“self”、LLM 或自监督关键词不足以入选。</p><p><b>核验方式：</b>以会议、出版社、作者论文与官方仓库核对题录和方法。每篇附来源与限制；摘要级核对不会写成独立复现，论文报告的效果也不会自动进入本站统一评测榜单。</p><p><b>覆盖限制：</b>这是精选导航，尚未穷尽所有会议论文集。这里的篇数表示当前收录量，不能当作领域论文产量。核对截至 {e(CFG['asof'])}。</p><p>参照 <a href="https://opensdc-org.github.io/survey/">OpenSDC Survey</a> 的文献组织方式；本文献库与其研究主题独立。欢迎通过 {link(CFG['repo_url']+'/issues','GitHub Issues')} 提交遗漏与勘误。</p>{review_html}<div class="maintenance"><h3>一起维护这份研究图谱</h3><p>推荐遗漏工作，或指出题录、方法与证据中的错误。提交内容公开保存在 GitHub Issues，按同一收录标准核对。</p><div class="maintenance-links">{link(CFG['repo_url']+'/issues/new?template=paper.yml','推荐论文','btn')}{link(CFG['repo_url']+'/issues/new?template=correction.yml','报告错误','btn')}<a class="btn" href="changelog.html">更新记录 →</a></div></div></section>
 <footer class="footer"><span>RSI Atlas / Survey<br>中文整理 · 英文原题 · 文献资料核对 {e(CFG['asof'])}</span><span>维护者 {e(CFG['owner'])} · 公开文献精选<br>论文版权归原作者与出版方所有</span><a href="#top">回到顶部 ↑</a></footer></main></div><script id="catalog-data" type="application/json">{payload}</script></body></html>'''
+write_changelog(ROOT, CFG)
 (ROOT/'index.html').write_text(html)
 (ROOT/'data'/'papers.json').write_text(json.dumps(papers,ensure_ascii=False,indent=2)+'\n')
 (ROOT/'assets'/'favicon.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#172e2a"/><path d="M45 23a17 17 0 1 0 3 17M45 13v12H33" fill="none" stroke="#e7eee6" stroke-width="4"/><circle cx="32" cy="32" r="4" fill="#d8a074"/></svg>')
