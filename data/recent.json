@@ -1,0 +1,499 @@
+[
+  {
+    "id": "rsir-2026",
+    "title": "Can Recommender Systems Teach Themselves? A Recursive Self-Improving Framework with Fidelity Control",
+    "short": "RSIR",
+    "year": 2026,
+    "venue": "ICML",
+    "category": "self-evolution",
+    "relevance": "direct",
+    "publication_type": "full",
+    "authors": "Luankang Zhang et al.",
+    "problem": "推荐交互稀疏；由模型生成数据再训练时，错误可能被递归放大。",
+    "method": "当前推荐器生成交互序列，经 fidelity 检查后加入训练数据，训练下一代推荐器。",
+    "loop": "模型生成 → 保真筛选 → 后继模型训练 → 下一轮生成；演化对象是训练数据与模型参数。",
+    "evidence": "作者报告多个数据集与骨干上的累积改进，并研究弱模型生成数据对较强模型的迁移；本条核对摘要、官方会议目录和作者代码，不录入未经统一复现的分数。",
+    "limitation": "论文报告的多轮收益不能视为所有切分、训练预算和选择规则下的保证；须控制额外训练与合成数据曝光量。",
+    "influence_reason": "近期直接研究推荐系统递归自训练的代表，明确提出生成、保真控制与迭代训练的闭环；尚不称为成熟经典。",
+    "url": "https://arxiv.org/abs/2602.15659",
+    "code": "https://github.com/USTC-StarTeam/RSIR",
+    "sources": [
+      "https://arxiv.org/abs/2602.15659",
+      "https://icml.cc/Downloads/2026",
+      "https://github.com/USTC-StarTeam/RSIR"
+    ],
+    "tags": [
+      "递归自训练",
+      "合成序列",
+      "保真控制"
+    ],
+    "verified": "2026-11-17",
+    "bib_authors": "Luankang Zhang and Hao Wang and Zhongzhou Liu and Mingjia Yin and Yonghao Huang and Jiaqi Li and Wei Guo and Yong Liu and Huifeng Guo and Defu Lian and Enhong Chen"
+  },
+  {
+    "id": "self-evolverec-2026",
+    "title": "Self-EvolveRec: Self-Evolving Recommender Systems with LLM-based Directional Feedback",
+    "short": "Self-EvolveRec",
+    "year": 2026,
+    "venue": "NeurIPS",
+    "category": "self-evolution",
+    "relevance": "direct",
+    "publication_type": "full",
+    "authors": "Sein Kim et al.",
+    "problem": "固定搜索空间限制推荐模型设计；单一准确率指标难以指出失败原因和改进方向。",
+    "method": "结合用户模拟器的定性反馈与模型诊断工具的定量检查，引导 LLM 修改推荐代码，并让诊断工具随模型一起更新。",
+    "loop": "诊断/模拟反馈 → 方向规划 → 代码修改 → 训练评估 → 模型与诊断工具共同演化。",
+    "evidence": "摘要报告对 NAS 和 LLM 代码演化基线的改进；NeurIPS 2026 官方目录已列出该题名，arXiv 最新版本也标注 NeurIPS 2026。",
+    "limitation": "标量代理、模拟用户反馈与真实用户满意度有区别；评估须记录搜索预算、验证集复用和最终独立测试。",
+    "influence_reason": "近期代码级自进化推荐的代表，强调反馈是否能提供方向以及诊断工具是否随系统变化；作为新进展收录。",
+    "url": "https://arxiv.org/abs/2602.12612",
+    "code": "https://github.com/Sein-Kim/self_evolverec",
+    "sources": [
+      "https://arxiv.org/abs/2602.12612",
+      "https://neurips.cc/Downloads/2026",
+      "https://github.com/Sein-Kim/self_evolverec"
+    ],
+    "tags": [
+      "代码演化",
+      "方向反馈",
+      "诊断工具"
+    ],
+    "verified": "2026-11-17",
+    "bib_authors": "Sein Kim and Sangwu Park and Hongseok Kang and Wonjoong Kim and Jimin Seo and Yeonjun In and Kanghoon Yoon and Hyunsik Jeon and Chanyoung Park"
+  },
+  {
+    "id": "self-evolving-youtube-2026",
+    "title": "Self-Evolving Recommendation System: End-To-End Autonomous Model Optimization With LLM Agents",
+    "short": "Self-Evolving RecSys",
+    "year": 2026,
+    "venue": "RecSys",
+    "category": "self-evolution",
+    "relevance": "direct",
+    "publication_type": "industry",
+    "authors": "Haochen Wang, Yi Wu, Daryl Chang, Li Wei, Lukasz Heldt",
+    "problem": "工业推荐模型的优化器、架构和奖励设计依赖昂贵的人工假设与实验迭代。",
+    "method": "离线快速循环生成并训练候选方案，在线慢速循环用延迟业务指标验证，LLM 智能体承担模型工程工作。",
+    "loop": "假设生成 → 代码与训练 → 离线代理筛选 → 在线验证 → 反馈到下一轮设计。",
+    "evidence": "作者报告 YouTube 生产上线案例；RecSys 2026 官方 Session 4 标注为 IND 工业轨论文。",
+    "limitation": "生产数据、基础设施和完整实验环境未在所核对入口公开；工业案例不能直接填入公开数据集统一排行榜。",
+    "influence_reason": "连接模型研发闭环与生产在线验证的工业代表，展示自进化不局限于数据增强；工业轨身份单独标记。",
+    "url": "https://arxiv.org/abs/2602.10226",
+    "code": "",
+    "sources": [
+      "https://arxiv.org/abs/2602.10226",
+      "https://recsys.acm.org/recsys26/session-4/"
+    ],
+    "tags": [
+      "工业推荐",
+      "双循环",
+      "自动模型工程"
+    ],
+    "verified": "2026-11-17",
+    "bib_authors": "Haochen Wang and Yi Wu and Daryl Chang and Li Wei and Lukasz Heldt"
+  },
+  {
+    "id": "sprec-2025",
+    "title": "SPRec: Self-Play to Debias LLM-based Recommendation",
+    "short": "SPRec",
+    "year": 2025,
+    "venue": "WWW",
+    "category": "self-evolution",
+    "relevance": "direct",
+    "publication_type": "full",
+    "authors": "Chongming Gao, Ruijun Chen, Shuai Yuan, Kexin Huang, Yuanqing Yu, Xiangnan He",
+    "problem": "推荐场景中的偏好优化可能集中推荐少数物品，进一步放大偏差。",
+    "method": "交替进行 SFT 与 DPO：真实交互作为正例，上一轮模型的预测作为负例，利用自对弈调整推荐分布。",
+    "loop": "当前模型生成 → 与真实交互组成偏好对 → SFT/DPO 更新 → 下一轮生成。",
+    "evidence": "作者摘要报告准确率和公平性上的改善；作者发布 WWW 2025 论文版本与可复现代码。",
+    "limitation": "自生成负例不等于真实用户负偏好；须同时报告准确率、物品覆盖与曝光偏差，并控制迭代数据量。",
+    "influence_reason": "将自对弈直接用于推荐偏差修正，形成有明确反馈来源的参数演化路线，是理解生成式推荐闭环的代表。",
+    "url": "https://arxiv.org/abs/2412.09243",
+    "code": "https://github.com/RegionCh/SPRec",
+    "sources": [
+      "https://arxiv.org/abs/2412.09243",
+      "https://hexiangnan.github.io/papers/www25-SPRec.pdf",
+      "https://github.com/RegionCh/SPRec",
+      "https://doi.org/10.1145/3696410.3714524"
+    ],
+    "tags": [
+      "自对弈",
+      "偏好优化",
+      "去偏"
+    ],
+    "verified": "2026-11-17",
+    "bib_authors": "Chongming Gao and Ruijun Chen and Shuai Yuan and Kexin Huang and Yuanqing Yu and Xiangnan He"
+  },
+  {
+    "id": "re2llm-2025",
+    "title": "Re2LLM: Reflective Reinforcement Large Language Model for Session-based Recommendation",
+    "short": "Re2LLM",
+    "year": 2025,
+    "venue": "AAAI",
+    "category": "agents",
+    "relevance": "direct",
+    "publication_type": "full",
+    "authors": "Ziyan Wang et al.",
+    "problem": "固定提示缺少任务反馈，而直接微调大模型成本较高。",
+    "method": "从推荐错误反思得到提示知识库，再通过强化学习训练轻量检索智能体，为具体会话选择有效提示。",
+    "loop": "错误反馈 → 反思提示积累 → 提示检索策略学习 → 改善后续推荐。",
+    "evidence": "AAAI 2025 正式论文页确认方法与实证比较；官方代码提供反思与强化利用两个阶段。",
+    "limitation": "反思知识与检索器更新应分别消融；这不意味着 LLM 的基础参数或自身改进算法持续演化。",
+    "influence_reason": "把自然语言错误反思和可学习检索结合，代表推荐智能体通过外部知识与策略更新实现改进的路线。",
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33399",
+    "code": "https://github.com/wang1351/Re2LLM",
+    "sources": [
+      "https://ojs.aaai.org/index.php/AAAI/article/view/33399",
+      "https://arxiv.org/abs/2403.16427",
+      "https://github.com/wang1351/Re2LLM"
+    ],
+    "tags": [
+      "错误反思",
+      "提示知识库",
+      "会话推荐"
+    ],
+    "verified": "2026-11-17",
+    "bib_authors": "Ziyan Wang and Yingpeng Du and Zhu Sun and Haoyan Chua and Kaidong Feng and Wenya Wang and Jie Zhang"
+  },
+  {
+    "id": "more-2025",
+    "title": "MoRE: A Mixture of Reflectors Framework for Large Language Model-Based Sequential Recommendation",
+    "short": "MoRE",
+    "year": 2025,
+    "venue": "RecSys",
+    "category": "agents",
+    "relevance": "direct",
+    "publication_type": "full",
+    "authors": "Weicong Qin, Yi Xu, Weijie Yu et al.",
+    "problem": "单一反思难以同时捕获显式偏好、隐式行为模式和跨用户协同信息。",
+    "method": "构造多个视角的反思器，用元反思器比较反思的有无与新旧版本，在离线迭代改进反思，并在线以 contextual bandit 选择视角。",
+    "loop": "多视角反思 → 反思效果比较 → 离线修改 → 在线动态选择。",
+    "evidence": "RecSys 2025 官方研究论文目录与作者正式版本一致，作者在三个基准上报告比较实验。",
+    "limitation": "离线反思改进与在线选择是两个环节；离线基准上的效果不能自动推断为真实线上长期收益。",
+    "influence_reason": "将反思本身作为可以评估、修改与选择的对象，是记忆/反思层自进化的近期代表。",
+    "url": "https://arxiv.org/abs/2409.06377",
+    "code": "https://github.com/E-qin/MoRE-Rec",
+    "sources": [
+      "https://arxiv.org/abs/2409.06377",
+      "https://recsys.acm.org/recsys25/accepted-contributions/",
+      "https://github.com/E-qin/MoRE-Rec"
+    ],
+    "tags": [
+      "反思演化",
+      "多视角",
+      "上下文老虎机"
+    ],
+    "verified": "2026-11-17",
+    "bib_authors": "Weicong Qin and Yi Xu and Weijie Yu and Chenglei Shen and Xiao Zhang and Ming He and Jianping Fan and Jun Xu"
+  },
+  {
+    "id": "usb-rec-2025",
+    "title": "USB-Rec: An Effective Framework for Improving Conversational Recommendation Capability of Large Language Model",
+    "short": "USB-Rec",
+    "year": 2025,
+    "venue": "RecSys",
+    "category": "agents",
+    "relevance": "direct",
+    "publication_type": "full",
+    "authors": "Jianyu Wen, Jingyun Wang, Cilin Yan, Jiayin Cai, Xiaolong Jiang, Ying Zhang",
+    "problem": "仅依赖大模型提示与摘要能力，难以系统地改善对话推荐策略。",
+    "method": "用用户模拟构造偏好优化数据进行训练，再在推理阶段使用自增强策略，整合训练与交互推理。",
+    "loop": "模拟反馈 → 偏好数据 → 模型优化；推理阶段进一步执行自增强。",
+    "evidence": "RecSys 2025 正式研究论文目录确认收录；官方仓库提供偏好数据构造与自增强代码。",
+    "limitation": "模型从模拟器反馈学习，结论依赖模拟行为与真实用户是否一致；训练优化和推理自增强应分开比较成本。",
+    "influence_reason": "代表以用户模拟驱动训练、再连接推理时自增强的对话推荐路线，补充纯序列推荐视角。",
+    "url": "https://arxiv.org/abs/2509.20381",
+    "code": "https://github.com/John-Wendell/USB_Rec",
+    "sources": [
+      "https://arxiv.org/abs/2509.20381",
+      "https://recsys.acm.org/recsys25/accepted-contributions/",
+      "https://github.com/John-Wendell/USB_Rec"
+    ],
+    "tags": [
+      "对话推荐",
+      "用户模拟",
+      "自增强"
+    ],
+    "verified": "2026-11-17",
+    "bib_authors": "Jianyu Wen and Jingyun Wang and Cilin Yan and Jiayin Cai and Xiaolong Jiang and Ying Zhang"
+  },
+  {
+    "id": "caserec-2025",
+    "title": "Improving Sequential Recommenders through Counterfactual Augmentation of System Exposure",
+    "short": "CaseRec",
+    "year": 2025,
+    "venue": "SIGIR",
+    "category": "synthetic",
+    "relevance": "direct",
+    "publication_type": "full",
+    "authors": "Ziqi Zhao et al.",
+    "problem": "只学习已点击序列会忽略曝光但未交互的物品，历史策略也限制了对新兴趣的探索。",
+    "method": "以决策 Transformer 建模曝光轨迹，用用户模拟器估计反事实反馈，提供随机和自改进两种增强策略。",
+    "loop": "当前推荐器自回归生成曝光 → 模拟反馈 → 反事实轨迹增强 → 训练推荐器。",
+    "evidence": "SIGIR 2025 正式论文与作者版本明确描述 self-improving 策略，在三个真实数据基准上评估。",
+    "limitation": "合成反馈由模拟器给出，不能视为真实因果反馈；须与随机增强、相同训练量和无增强对照比较。",
+    "influence_reason": "将曝光信息、反事实模拟和自改进训练相连，是数据层闭环的代表，也有助于区别保真性与训练效用。",
+    "url": "https://doi.org/10.1145/3726302.3730005",
+    "code": "https://github.com/ZiqiZhao1/CaseRec",
+    "sources": [
+      "https://doi.org/10.1145/3726302.3730005",
+      "https://arxiv.org/abs/2504.13482",
+      "https://github.com/ZiqiZhao1/CaseRec"
+    ],
+    "tags": [
+      "反事实增强",
+      "曝光建模",
+      "决策Transformer"
+    ],
+    "verified": "2026-11-17",
+    "bib_authors": "Ziqi Zhao and Zhaochun Ren and Jiyuan Yang and Zuming Yan and Zihan Wang and Liu Yang and Pengjie Ren and Zhumin Chen and Maarten de Rijke and Xin Xin"
+  },
+  {
+    "id": "billp-2024",
+    "title": "Large Language Models are Learnable Planners for Long-Term Recommendation",
+    "short": "BiLLP",
+    "year": 2024,
+    "venue": "SIGIR",
+    "category": "agents",
+    "relevance": "direct",
+    "publication_type": "full",
+    "authors": "Wentao Shi et al.",
+    "problem": "推荐需要兼顾即时收益与长期参与，但稀疏交互使从头学习长期策略不稳定。",
+    "method": "将 LLM 规划分为宏观指导和微观个性化策略两个可学习层次，从交互经验改进规划。",
+    "loop": "交互轨迹/收益 → 宏观经验与微观策略学习 → 下一轮规划与执行。",
+    "evidence": "SIGIR 2024 官方会议论文集列出全文研究论文；作者提供代码和数据，摘要报告长期推荐实验。",
+    "limitation": "长期规划实验须区分模拟环境与真实在线交互；累计收益、轨迹长度与单步奖励不能混为同一指标。",
+    "influence_reason": "早期把 LLM 从静态推理器推进为可学习长期推荐规划器的代表，连接反思智能体和强化学习路线。",
+    "url": "https://arxiv.org/abs/2403.00843",
+    "code": "https://github.com/jizhi-zhang/BiLLP",
+    "sources": [
+      "https://arxiv.org/abs/2403.00843",
+      "https://sigir-2024.github.io/proceedings.html",
+      "https://github.com/jizhi-zhang/BiLLP"
+    ],
+    "tags": [
+      "长期推荐",
+      "可学习规划",
+      "交互反馈"
+    ],
+    "verified": "2026-11-17",
+    "bib_authors": "Wentao Shi and Xiangnan He and Yang Zhang and Chongming Gao and Xinyue Li and Jizhi Zhang and Qifan Wang and Fuli Feng"
+  },
+  {
+    "id": "agentcf-2024",
+    "title": "AgentCF: Collaborative Learning with Autonomous Language Agents for Recommender Systems",
+    "short": "AgentCF",
+    "year": 2024,
+    "venue": "WWW",
+    "category": "agents",
+    "relevance": "direct",
+    "publication_type": "full",
+    "authors": "Junjie Zhang et al.",
+    "problem": "语言模型难以仅凭语言能力理解真实用户与物品的协同关系。",
+    "method": "把用户和物品都建模为语言智能体，比较自主交互决策与真实日志的差异，再共同反思并更新。",
+    "loop": "用户/物品智能体交互 → 对照真实记录 → 协同反思 → 更新偏好记忆 → 后续交互。",
+    "evidence": "WWW 2024 官方 Research Tracks 录用目录确认题名与作者；作者论文描述双侧智能体的协同优化，研究团队公开实现。",
+    "limitation": "主要演化对象是自然语言偏好与记忆，不能等同于修改底层模型参数；模拟行为一致性也不等同线上收益。",
+    "influence_reason": "用户和物品双侧智能体通过反馈共同改进，是推荐记忆演化和语言化协同过滤的代表性早期工作。",
+    "url": "https://doi.org/10.1145/3589334.3645537",
+    "code": "https://github.com/RUCAIBox/AgentCF",
+    "sources": [
+      "https://arxiv.org/abs/2310.09233",
+      "https://www2024.thewebconf.org/accepted/research-tracks/",
+      "https://doi.org/10.1145/3589334.3645537",
+      "https://github.com/RUCAIBox/AgentCF"
+    ],
+    "tags": [
+      "协同反思",
+      "用户物品智能体",
+      "记忆更新"
+    ],
+    "verified": "2026-11-17",
+    "bib_authors": "Junjie Zhang and Yupeng Hou and Ruobing Xie and Wenqi Sun and Julian McAuley and Wayne Xin Zhao and Leyu Lin and Ji-Rong Wen"
+  },
+  {
+    "id": "aicl-2024",
+    "title": "Adaptive In-Context Learning with Large Language Models for Bundle Generation",
+    "short": "AICL",
+    "year": 2024,
+    "venue": "SIGIR",
+    "category": "agents",
+    "relevance": "direct",
+    "publication_type": "full",
+    "authors": "Zhu Sun, Kaidong Feng, Jie Yang, Xinghua Qu, Hui Fang, Yew-Soon Ong, Wenyuan Liu",
+    "problem": "组合商品推荐既要生成合理物品组合，又要解释用户意图；固定示例不适合不同会话。",
+    "method": "检索相近会话，联合进行组合生成和意图推断，再通过相互自纠正与自动反馈形成针对目标会话的示例。",
+    "loop": "邻近示例推理 → 自纠正/自动反馈 → 改进演示 → 目标会话推荐。",
+    "evidence": "SIGIR 2024 官方论文集与作者元数据确认；作者在三个数据集上评估，提供代码。",
+    "limitation": "这是上下文和推理过程的改进，不自动形成跨请求持久学习或模型参数更新；反馈使用范围需防止测试泄漏。",
+    "influence_reason": "展示无需参数更新也能通过反馈改善推荐推理，是区分推理时适应与持久自进化的典型案例。",
+    "url": "https://arxiv.org/abs/2312.16262",
+    "code": "https://github.com/BundleRec/bundle_generation",
+    "sources": [
+      "https://arxiv.org/abs/2312.16262",
+      "https://sigir-2024.github.io/proceedings.html",
+      "https://github.com/BundleRec/bundle_generation"
+    ],
+    "tags": [
+      "自纠正",
+      "上下文学习",
+      "组合推荐"
+    ],
+    "verified": "2026-11-17",
+    "bib_authors": "Zhu Sun and Kaidong Feng and Jie Yang and Xinghua Qu and Hui Fang and Yew-Soon Ong and Wenyuan Liu"
+  },
+  {
+    "id": "agent4rec-2024",
+    "title": "On Generative Agents in Recommendation",
+    "short": "Agent4Rec",
+    "year": 2024,
+    "venue": "SIGIR",
+    "category": "agents",
+    "relevance": "enabling",
+    "publication_type": "perspective",
+    "authors": "An Zhang, Yuxin Chen, Leheng Sheng, Xiang Wang, Tat-Seng Chua",
+    "problem": "离线指标与在线推荐效果脱节，真实用户交互实验又昂贵且难以控制。",
+    "method": "用包含用户画像、记忆、情绪反思与行为模块的生成式智能体构造推荐模拟环境。",
+    "loop": "推荐曝光 → 模拟用户行为 → 记忆与反思更新；为候选系统评估提供反馈环境。",
+    "evidence": "SIGIR 2024 明确标注 Perspective；作者检验模拟用户与真实偏好的相符及偏离，并公开代码。",
+    "limitation": "这是自进化评估的支撑环境，并非推荐模型自改进算法；模拟器偏差可能被优化过程利用。",
+    "influence_reason": "推荐用户模拟与 LLM 智能体的代表工作，适合作为闭环反馈可信度的阅读入口；Perspective 身份明确标记。",
+    "url": "https://arxiv.org/abs/2310.10108",
+    "code": "https://github.com/LehengTHU/Agent4Rec",
+    "sources": [
+      "https://arxiv.org/abs/2310.10108",
+      "https://sigir-2024.github.io/proceedings.html",
+      "https://github.com/LehengTHU/Agent4Rec"
+    ],
+    "tags": [
+      "用户模拟",
+      "评估环境",
+      "情绪记忆"
+    ],
+    "verified": "2026-11-17",
+    "bib_authors": "An Zhang and Yuxin Chen and Leheng Sheng and Xiang Wang and Tat-Seng Chua"
+  },
+  {
+    "id": "gpt4rec-graph-2024",
+    "title": "GPT4Rec: Graph Prompt Tuning for Streaming Recommendation",
+    "short": "GPT4Rec (Graph)",
+    "year": 2024,
+    "venue": "SIGIR",
+    "category": "continual",
+    "relevance": "enabling",
+    "publication_type": "full",
+    "authors": "Peiyan Zhang et al.",
+    "problem": "流式推荐需要适应用户、物品与交互关系变化，同时避免昂贵的历史回放或模型扩张。",
+    "method": "将交互图分解为多个视角，以节点级、结构级和视角级图提示适应持续到来的图变化。",
+    "loop": "新交互图分段到来 → 图提示适应 → 更新推荐；属于持续学习支撑路线。",
+    "evidence": "SIGIR 2024 官方论文集与 arXiv 题名一致；作者报告四个真实数据集上的效果和效率实验。",
+    "limitation": "名称中的 GPT 指图提示技术，不能误写为 GPT 大语言模型；持续适应不等于自主修改改进程序。",
+    "influence_reason": "以轻量适应模块处理动态反馈，代表自进化系统需要的低成本持续更新能力。",
+    "url": "https://arxiv.org/abs/2406.08229",
+    "code": "",
+    "sources": [
+      "https://arxiv.org/abs/2406.08229",
+      "https://sigir-2024.github.io/proceedings.html",
+      "https://doi.org/10.1145/3626772.3657720"
+    ],
+    "tags": [
+      "持续学习",
+      "图提示",
+      "流式推荐"
+    ],
+    "verified": "2026-11-17",
+    "bib_authors": "Peiyan Zhang and Yuchen Yan and Xi Zhang and Liying Kang and Chaozhuo Li and Feiran Huang and Senzhang Wang and Sunghun Kim"
+  },
+  {
+    "id": "llmrec-2024",
+    "title": "LLMRec: Large Language Models with Graph Augmentation for Recommendation",
+    "short": "LLMRec",
+    "year": 2024,
+    "venue": "WSDM",
+    "category": "synthetic",
+    "relevance": "enabling",
+    "publication_type": "full",
+    "authors": "Wei Wei, Xubin Ren, Jiabin Tang et al.",
+    "problem": "稀疏交互和低质量辅助信息限制推荐表示学习。",
+    "method": "通过 LLM 增强用户物品边、物品属性和用户画像，再对增强数据去噪并训练推荐器。",
+    "loop": "语言模型生成辅助信号 → 数据去噪 → 推荐器学习；提供数据增强组件。",
+    "evidence": "WSDM 2024 官方论文目录确认题名与作者；研究团队公开实现及增强数据。",
+    "limitation": "主要利用外部 LLM 提供知识，不是推荐器自己生成、评价并递归改善的完整闭环。",
+    "influence_reason": "LLM 增强推荐数据的代表性开源工作，可作为自生成增强方法的外部教师对照。",
+    "url": "https://arxiv.org/abs/2311.00423",
+    "code": "https://github.com/HKUDS/LLMRec",
+    "sources": [
+      "https://www.sigweb.org/toc/wsdm24.html",
+      "https://github.com/HKUDS/LLMRec",
+      "https://arxiv.org/abs/2311.00423"
+    ],
+    "tags": [
+      "数据增强",
+      "外部教师",
+      "图学习"
+    ],
+    "verified": "2026-11-17",
+    "bib_authors": "Wei Wei and Xubin Ren and Jiabin Tang and Qinyong Wang and Lixin Su and Suqi Cheng and Junfeng Wang and Dawei Yin and Chao Huang"
+  },
+  {
+    "id": "teracon-2023",
+    "title": "Task Relation-aware Continual User Representation Learning",
+    "short": "TERACON",
+    "year": 2023,
+    "venue": "KDD",
+    "category": "continual",
+    "relevance": "enabling",
+    "publication_type": "full",
+    "authors": "Sein Kim, Namkyeong Lee, Donghyun Kim, Minchul Yang, Chanyoung Park",
+    "problem": "用户表示需要连续学习新任务，同时保留已有任务的知识。",
+    "method": "以任务嵌入产生关系感知的软掩码，并用伪标签知识保留模块缓解遗忘。",
+    "loop": "新任务 → 关系感知适应 → 保留旧任务知识 → 下一任务；演化对象是用户表示。",
+    "evidence": "KDD 2023 正式论文确认方法与公开/工业数据评估；作者公开实现。",
+    "limitation": "任务顺序由外部给定，属于持续学习组件；并未自主提出新任务或改写学习算法。",
+    "influence_reason": "代表用户建模中的持续学习与知识保留路线，有助于评价自进化是否在提升新任务时遗忘旧能力。",
+    "url": "https://doi.org/10.1145/3580305.3599516",
+    "code": "https://github.com/Sein-Kim/TERACON",
+    "sources": [
+      "https://doi.org/10.1145/3580305.3599516",
+      "https://arxiv.org/abs/2306.01792",
+      "https://github.com/Sein-Kim/TERACON"
+    ],
+    "tags": [
+      "持续用户建模",
+      "灾难性遗忘",
+      "知识保留"
+    ],
+    "verified": "2026-11-17",
+    "bib_authors": "Sein Kim and Namkyeong Lee and Donghyun Kim and Minchul Yang and Chanyoung Park"
+  },
+  {
+    "id": "prefrec-2023",
+    "title": "PrefRec: Recommender Systems with Human Preferences for Reinforcing Long-term User Engagement",
+    "short": "PrefRec",
+    "year": 2023,
+    "venue": "KDD",
+    "category": "reinforcement",
+    "relevance": "enabling",
+    "publication_type": "full",
+    "authors": "Wanqi Xue et al.",
+    "problem": "长期参与难以用手工设计的即时奖励表达。",
+    "method": "从用户历史行为的偏好比较学习奖励函数，再利用该奖励优化推荐策略。",
+    "loop": "行为偏好 → 奖励模型 → 强化策略优化；反馈驱动参数更新。",
+    "evidence": "KDD 2023 官方论文目录收录，作者论文报告多种长期参与任务上的实证比较。",
+    "limitation": "需要偏好监督，不能归为完全无外部反馈的自提升；奖励模型误差与偏好分布转移需要独立评估。",
+    "influence_reason": "把偏好反馈与长期推荐优化连接，是理解自进化系统评价信号从何而来的关键方法路线。",
+    "url": "https://arxiv.org/abs/2212.02779",
+    "code": "",
+    "sources": [
+      "https://arxiv.org/abs/2212.02779",
+      "https://kdd.org/kdd2023/wp-content/uploads/2023/08/toc.html",
+      "https://doi.org/10.1145/3580305.3599473"
+    ],
+    "tags": [
+      "偏好反馈",
+      "长期参与",
+      "奖励学习"
+    ],
+    "verified": "2026-11-17",
+    "bib_authors": "Wanqi Xue and Qingpeng Cai and Zhenghai Xue and Shuo Sun and Shuchang Liu and Dong Zheng and Peng Jiang and Kun Gai and Bo An"
+  }
+]
