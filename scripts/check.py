@@ -22,7 +22,21 @@ for raw in p.links:
     elif not u.path.startswith('../'):
         assert (ROOT/unquote(u.path)).exists(),f'Missing file: {raw}'
 records=json.loads((ROOT/'data/papers.json').read_text())
+config=json.loads((ROOT/'config.json').read_text())
+recent=json.loads((ROOT/'data/recent.json').read_text())
+classics=json.loads((ROOT/'data/classics.json').read_text())
+assert config['recent_end'] - config['recent_start'] == 4, 'Recent window must cover five publication years'
+assert all(config['recent_start'] <= r['year'] <= config['recent_end'] for r in recent), 'Paper outside recent window'
+assert all(r['year'] < config['recent_start'] for r in classics), 'Recent paper in background source'
+assert {r['id'] for r in records} == {r['id'] for r in recent+classics}, 'Generated catalog differs from sources'
 assert all(r['id'] in p.ids for r in records)
 assert len(records)==len({r['id'] for r in records})
-assert all(r['sources'] and r['influence_reason'] for r in records)
+assert all(r['sources'] and r['influence_reason'] and r.get('bib_authors') for r in records)
+review_path=ROOT/'data/selection-review.json'
+if review_path.exists():
+    review=json.loads(review_path.read_text())
+    included={r['id'] for r in records}
+    assert all(r['id'] in included for r in review['added']), 'Added paper missing from catalog'
+    assert all(r['id'] not in included and r['id'] in p.ids for r in review['removed']), 'Removed-paper notice missing'
+    assert all(r['id'] not in included for r in review['not_selected']), 'Deferred candidate appears in catalog'
 print(f'PASS: {len(records)} papers, {len(p.ids)} unique anchors, {len(p.links)} links and assets checked')

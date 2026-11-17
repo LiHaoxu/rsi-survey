@@ -3,5 +3,7 @@
   "survey_url": "../rsi-survey/index.html",
   "bench_url": "../rsi-bench/index.html",
   "repo_url": "https://github.com/LiHaoxu/rsi-survey",
-  "asof": "2026-11-17"
+  "asof": "2026-11-17",
+  "recent_start": 2022,
+  "recent_end": 2026
 }

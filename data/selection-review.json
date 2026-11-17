@@ -1,0 +1,279 @@
+{
+  "reviewed": "2026-11-17",
+  "publication_window": {
+    "start": 2022,
+    "end": 2026
+  },
+  "method": "围绕现有六条研究路线的定向查漏与精简，不是穷尽所有论文集的系统综述。2022年前只补必要前史；不设收录数或年度配额。",
+  "criteria": [
+    "已核实领域会议正式发表及轨道",
+    "存在清楚的反馈更新机制，或对理解/评估该机制不可缺少",
+    "有后续沿用、机制代表性或真实系统验证的具体依据",
+    "相近机制避免重复堆叠，近期代表不冒称成熟经典"
+  ],
+  "added": [
+    {
+      "id": "conure-2021",
+      "short": "Conure",
+      "title": "One Person, One Model, One World: Learning Continual User Representation without Forgetting",
+      "year": 2021,
+      "venue": "SIGIR",
+      "influence_reason": "作为 2022 年前的必要前史保留：TERACON 在问题定义、方法局限和主基线中直接承接 Conure，并沿用其部分数据设置；有明确后续研究沿用证据。",
+      "sources": [
+        "https://eprints.gla.ac.uk/248187/",
+        "https://arxiv.org/abs/2009.13724",
+        "https://github.com/fajieyuan/SIGIR2021_Conure",
+        "https://arxiv.org/html/2306.01792"
+      ]
+    },
+    {
+      "id": "graphsail-2020",
+      "short": "GraphSAIL",
+      "title": "GraphSAIL: Graph Structure Aware Incremental Learning for Recommender Systems",
+      "year": 2020,
+      "venue": "CIKM",
+      "influence_reason": "作为 2022 年前的必要前史保留：它建立了图推荐增量学习的结构蒸馏路线，后续三届不同正式会议工作持续将其用作基线，而非仅凭题名或发表年份入选。",
+      "sources": [
+        "https://arxiv.org/abs/2008.13517",
+        "https://doi.org/10.1145/3340531.3412754",
+        "https://arxiv.org/html/2303.11700",
+        "https://arxiv.org/html/2406.08229",
+        "https://q-rz.github.io/static/sigir25/sigir25-pisa-paper.pdf"
+      ]
+    },
+    {
+      "id": "degc-2023",
+      "short": "DEGC",
+      "title": "Dynamically Expandable Graph Convolution for Streaming Recommendation",
+      "year": 2023,
+      "venue": "WWW",
+      "influence_reason": "代表以模型容量和结构调整处理流式偏好变化的路线，且有 GPT4Rec 正式论文中的后续基线沿用证据，补足仅靠蒸馏或提示更新的视角。",
+      "sources": [
+        "https://arxiv.org/html/2303.11700",
+        "https://doi.org/10.1145/3543507.3583237",
+        "https://github.com/BokwaiHo/DEGC",
+        "https://arxiv.org/html/2406.08229"
+      ]
+    },
+    {
+      "id": "piw-2023",
+      "short": "PIW",
+      "title": "Structure Aware Incremental Learning with Personalized Imitation Weights for Recommender Systems",
+      "year": 2023,
+      "venue": "AAAI",
+      "influence_reason": "从统一知识保留推进到用户级适应权重，并成为 PISA 直接讨论与比较的前序方法；有机制贡献与后续正式基线两类证据。",
+      "sources": [
+        "https://ojs.aaai.org/index.php/AAAI/article/view/25595",
+        "https://arxiv.org/html/2305.01204",
+        "https://q-rz.github.io/static/sigir25/sigir25-pisa-paper.pdf"
+      ]
+    },
+    {
+      "id": "po4isr-2024",
+      "short": "PO4ISR",
+      "title": "Large Language Models for Intent-Driven Session Recommendations",
+      "year": 2024,
+      "venue": "SIGIR",
+      "influence_reason": "补上错误驱动的自动提示优化这一早期节点：候选生成与基于任务奖励的选择形成明确循环；比单次回答自纠错更直接对应可复用策略的演化。",
+      "sources": [
+        "https://sigir-2024.github.io/proceedings.html",
+        "https://doi.org/10.1145/3626772.3657688",
+        "https://arxiv.org/abs/2312.07552",
+        "https://arxiv.org/html/2312.07552v1",
+        "https://github.com/llm4sr/PO4ISR"
+      ]
+    },
+    {
+      "id": "r4ec-2025",
+      "short": "R⁴ec",
+      "title": "R4ec: A Reasoning, Reflection, and Refinement Framework for Recommendation Systems",
+      "year": 2025,
+      "venue": "RecSys",
+      "influence_reason": "补上可训练反思器与迭代知识修正这一节点，并把机制消融连接到真实线上验证；作为近期机制代表收录，不以题名或未经核验的被引数宣称经典。",
+      "sources": [
+        "https://recsys.acm.org/recsys25/accepted-contributions/",
+        "https://doi.org/10.1145/3705328.3748068",
+        "https://arxiv.org/abs/2507.17249",
+        "https://arxiv.org/html/2507.17249v2",
+        "https://github.com/ucas-hao/R4ec"
+      ]
+    },
+    {
+      "id": "dorl-2023",
+      "short": "DORL",
+      "title": "Alleviating Matthew Effect of Offline Reinforcement Learning in Interactive Recommendation",
+      "year": 2023,
+      "venue": "SIGIR",
+      "influence_reason": "补足自我改进可能放大曝光偏差的关键问题；DORL 后续被 EasyRL4Rec 收录为可运行策略，具有可核查的工具沿用证据。",
+      "sources": [
+        "https://arxiv.org/abs/2307.04571",
+        "https://arxiv.org/html/2307.04571v1",
+        "https://doi.org/10.1145/3539618.3591636",
+        "https://github.com/chongminggao/DORL-codes",
+        "https://github.com/chongminggao/EasyRL4Rec"
+      ]
+    },
+    {
+      "id": "rlur-2023",
+      "short": "RLUR",
+      "title": "Reinforcing User Retention in a Billion Scale Short Video Recommender System",
+      "year": 2023,
+      "venue": "WWW",
+      "influence_reason": "提供近年跨会话延迟反馈驱动推荐更新的产业案例，补足仅有静态离线评测的证据缺口；不将部署报告视为独立复现。",
+      "sources": [
+        "https://arxiv.org/abs/2302.01724",
+        "https://arxiv.org/html/2302.01724v3",
+        "https://doi.org/10.1145/3543873.3584640",
+        "https://github.com/ksRecoTech/Kuai-RL"
+      ]
+    },
+    {
+      "id": "sgdl-2022",
+      "short": "SGDL",
+      "title": "Self-Guided Learning to Denoise for Robust Recommendation",
+      "year": 2022,
+      "venue": "SIGIR",
+      "influence_reason": "补足自适应训练样本选择与去噪这一支线；SIGIR 2025 的 M³BSR 在实验中仍将 SGDL 列为对照，可说明后续沿用而不依赖引用量宣传。",
+      "sources": [
+        "https://arxiv.org/abs/2204.06832",
+        "https://arxiv.org/html/2204.06832v3",
+        "https://doi.org/10.1145/3477495.3532059",
+        "https://github.com/yuntaod/SGDL",
+        "https://arxiv.org/abs/2508.05352",
+        "https://arxiv.org/html/2508.05352v1"
+      ]
+    }
+  ],
+  "removed": [
+    {
+      "id": "aicl-2024",
+      "short": "AICL",
+      "title": "Adaptive In-Context Learning with Large Language Models for Bundle Generation",
+      "year": 2024,
+      "venue": "SIGIR",
+      "reason": "正式发表无误，但核心是为目标会话检索邻居、改进演示并归纳局部规则；没有明确跨请求持续状态更新。与 PO4ISR 的可复用提示迭代、Re2LLM 的知识库/检索器更新及 MoRE 的反思优化相比，新增机制覆盖有限。移出是精选范围判断，不代表论文质量或发表信息有误。",
+      "sources": [
+        "https://arxiv.org/abs/2312.16262",
+        "https://sigir-2024.github.io/proceedings.html",
+        "https://github.com/BundleRec/bundle_generation",
+        "https://arxiv.org/html/2312.16262v2"
+      ]
+    },
+    {
+      "id": "usb-rec-2025",
+      "short": "USB-Rec",
+      "title": "USB-Rec: An Effective Framework for Improving Conversational Recommendation Capability of Large Language Model",
+      "year": 2025,
+      "venue": "RecSys",
+      "reason": "正式 RecSys Full Paper；训练端使用用户模拟器构造偏好对，推理端是多次采样、模拟后续对话并择优，可扩展为树搜索。其 Self-Enhancement 主要是推理搜索，不是持续自修改；保留 SPRec、Re2LLM/MoRE 与新加入 R4ec 后，作为精选主线的边际覆盖不足。",
+      "sources": [
+        "https://arxiv.org/abs/2509.20381",
+        "https://recsys.acm.org/recsys25/accepted-contributions/",
+        "https://github.com/John-Wendell/USB_Rec",
+        "https://arxiv.org/html/2509.20381v1"
+      ]
+    }
+  ],
+  "not_selected": [
+    {
+      "id": "pisa-2025",
+      "title": "Embracing Plasticity: Balancing Stability and Plasticity in Continual Recommender Systems",
+      "reason": "正式SIGIR2025论文与代码已核实；本轮已纳入GraphSAIL、PIW、DEGC，PISA属于同一持续推荐脉络的近期扩展，独立后续沿用证据尚未充分核实，先保留候选而不继续叠加。",
+      "sources": [
+        "https://sigir2025.dei.unipd.it/accepted-papers.html",
+        "https://q-rz.github.io/static/sigir25/sigir25-pisa-paper.pdf",
+        "https://github.com/hsyoo32/pisa"
+      ]
+    },
+    {
+      "id": "lion-2026",
+      "title": "Self-Evolving Memory for Generative Recommendation",
+      "reason": "CIKM 2026 正式程序 A010 标注 FULL，作者公开代码；通过稀疏键值记忆与巩固损失处理生成推荐持续适应中的模式冲突。与持续学习已有脉络相关，但发表时间很近，按本轮少而精原则先观察，不因题名含 self-evolving 自动进入主精选。",
+      "sources": [
+        "https://cikm2026.diag.uniroma1.it/cikm-program/CIKM2026_program.html",
+        "https://arxiv.org/abs/2609.15598",
+        "https://github.com/JazyJiang/Self-Evolving-Memory-for-Generative-Recommendation"
+      ]
+    },
+    {
+      "id": "cirs-2023",
+      "title": "CIRS: Bursting Filter Bubbles by Counterfactual Interactive Recommender System",
+      "reason": "主题相关，但核实后的正式发表是TOIS期刊，不是本轮采用的领域会议范围；不能误标为SIGIR2022以满足条件。",
+      "sources": [
+        "https://doi.org/10.1145/3594871",
+        "https://github.com/chongminggao/CIRS-codes"
+      ]
+    },
+    {
+      "id": "melu-2019",
+      "title": "MeLU: Meta-Learned User Preference Estimator for Cold-Start Recommendation",
+      "reason": "KDD2019元学习代表，但主要解决冷启动快速适应；本轮五年主题查漏无需再扩大通用元学习前史。",
+      "sources": [
+        "https://github.com/hoyeoplee/MeLU",
+        "https://arxiv.org/abs/1908.00413"
+      ]
+    },
+    {
+      "id": "afl-2025",
+      "title": "Agentic Feedback Loop Modeling Improves Recommendation and User Simulation",
+      "reason": "SIGIR2025正式工作已核实，但其双智能体回路主要更新记忆，基础推荐与奖励模型不在回路中训练。本轮已有反馈记忆、提示优化、知识修正代表，暂不叠加相近机制。",
+      "sources": [
+        "https://doi.org/10.1145/3726302.3729893",
+        "https://arxiv.org/html/2410.20027v2"
+      ]
+    },
+    {
+      "id": "ast-2023",
+      "title": "Reconsidering Learning Objectives in Unbiased Recommendation with Unobserved Confounders",
+      "reason": "正式发表于KDD2023，预印本首发2022不能替代会议年份。本轮已保留去偏评估基础，并补入SGDL自引导样本选择；暂不继续扩大静态去偏训练支线。",
+      "sources": [
+        "https://arxiv.org/abs/2206.03851"
+      ]
+    },
+    {
+      "id": "tail-steak-2024",
+      "title": "Tail-STEAK: Improve Friend Recommendation for Tail Users via Self-Training Enhanced Knowledge Distillation",
+      "reason": "AAAI2024正式工作，但应用聚焦长尾好友推荐与两阶段伪链训练；在当前精选图谱中，其补缺优先级低于所选持续适应与交互反馈节点。",
+      "sources": [
+        "https://ojs.aaai.org/index.php/AAAI/article/view/28737"
+      ]
+    }
+  ],
+  "retained_context": [
+    {
+      "id": "llmrec-2024",
+      "reason": "作为固定外部教师生成辅助监督的对照保留：用于区分 LLM 增强信号与推荐器自身反馈迭代的贡献。该条属于支撑方法，不是直接自进化成果。",
+      "sources": [
+        "https://www.sigweb.org/toc/wsdm24.html",
+        "https://github.com/HKUDS/LLMRec",
+        "https://arxiv.org/abs/2311.00423"
+      ]
+    }
+  ],
+  "taxonomy_adjustments": [
+    {
+      "id": "ranking-distillation-2018",
+      "from": "self-evolution",
+      "to": "synthetic",
+      "reason": "模型自举、潜在监督构造或教师蒸馏属于合成监督支撑方法；不与直接自主系统改进混为一类。"
+    },
+    {
+      "id": "buir-2021",
+      "from": "self-evolution",
+      "to": "synthetic",
+      "reason": "模型自举、潜在监督构造或教师蒸馏属于合成监督支撑方法；不与直接自主系统改进混为一类。"
+    },
+    {
+      "id": "iclrec-2022",
+      "from": "self-evolution",
+      "to": "synthetic",
+      "reason": "模型自举、潜在监督构造或教师蒸馏属于合成监督支撑方法；不与直接自主系统改进混为一类。"
+    },
+    {
+      "id": "ncl-2022",
+      "from": "self-evolution",
+      "to": "synthetic",
+      "reason": "模型自举、潜在监督构造或教师蒸馏属于合成监督支撑方法；不与直接自主系统改进混为一类。"
+    }
+  ]
+}

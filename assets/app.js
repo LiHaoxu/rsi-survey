@@ -15,7 +15,10 @@
     let visible = 0;
     entries.forEach(e => {
       const match = terms.every(t => e.textContent.toLocaleLowerCase().includes(t)) &&
-        fields.every(f => f.name === 'q' || !f.value || (f.name === 'code' ? e.dataset.code === 'yes' : e.dataset[f.name] === f.value));
+        fields.every(f => f.name === 'q' || !f.value ||
+          (f.name === 'year' && ['recent','background'].includes(f.value)
+            ? e.dataset.period === f.value
+            : f.name === 'code' ? e.dataset.code === 'yes' : e.dataset[f.name] === f.value));
       e.hidden = !match;
       if (match) visible++;
     });
